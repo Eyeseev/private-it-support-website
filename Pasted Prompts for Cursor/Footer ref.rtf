@@ -1,0 +1,133 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2856
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 HelveticaNeue;\f4\froman\fcharset0 Times-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red109\green109\blue109;\red0\green0\blue0;
+\red179\green179\blue179;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;\cssrgb\c0\c0\c0\c84706;
+\cssrgb\c75294\c75294\c75294;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u55357 \u56615  Footer Goals (Strategy)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Your footer should do 4 things:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Reinforce trust
+\f1\b0  (legit business = contact info, copyright, etc.)\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Help navigation
+\f1\b0  (jump back to key sections)\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Support accessibility
+\f1\b0  (semantic HTML, contrast, keyboard focus)\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Be responsive
+\f1\b0  (stacked mobile layout, readable, tappable)\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 \strokec2 \uc0\u55357 \u56481  Recommended Footer Layout\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 tsx\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs22 \cf4 \cb5 \strokec4 CopyEdit
+\f2\fs26 \cf0 \cb1 \strokec2 \
+<footer className="bg-blue-900 text-white px-6 py-10">\
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">\
+    \
+    \{/* Contact Info */\}\
+    <div>\
+      <h4 className="font-semibold mb-2 text-white">Contact</h4>\
+      <p>Email: <a href="mailto:victor@privateitsupport.com" className="underline hover:text-gray-300">victor@privateitsupport.com</a></p>\
+      <p>Serving NYC & Remote Clients</p>\
+    </div>\
+\
+    \{/* Quick Links */\}\
+    <div>\
+      <h4 className="font-semibold mb-2 text-white">Quick Links</h4>\
+      <ul className="space-y-1">\
+        <li><a href="#services" className="hover:text-gray-300">Services</a></li>\
+        <li><a href="#consultation" className="hover:text-gray-300">Free Consultation</a></li>\
+        <li><a href="#about" className="hover:text-gray-300">About</a></li>\
+      </ul>\
+    </div>\
+\
+    \{/* Legal / Copyright */\}\
+    <div>\
+      <h4 className="font-semibold mb-2 text-white">Legal</h4>\
+      <ul className="space-y-1">\
+        <li><a href="/privacy-policy" className="hover:text-gray-300">Privacy Policy</a></li>\
+        <li><a href="/terms" className="hover:text-gray-300">Terms of Service</a></li>\
+      </ul>\
+      <p className="mt-4 text-xs text-gray-400">&copy; \{new Date().getFullYear()\} Private IT Support. All rights reserved.</p>\
+    </div>\
+\
+  </div>\
+</footer>\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 \strokec2 \uc0\u9989  Matches Your Cursor Checkpoints\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls2\ilvl0
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  
+\f4\i Semantic HTML
+\f1\i0 : 
+\f2\fs26 <footer>
+\f1\fs24 , 
+\f2\fs26 <h4>
+\f1\fs24 , 
+\f2\fs26 <ul>
+\f1\fs24  used properly\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  
+\f4\i Mobile Responsive
+\f1\i0 : Uses 
+\f2\fs26 grid-cols-1 md:grid-cols-3
+\f1\fs24 \
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  
+\f4\i Contrast & Accessibility
+\f1\i0 : Blue background + white text, links underlined and hover-highlighted\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u9989  
+\f4\i SEO & Trust
+\f1\i0 : Includes business info, copyright, and legal placeholders\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 \strokec2 \uc0\u55357 \u57056  Next Steps for Footer\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls3\ilvl0
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Add placeholder 
+\f2\fs26 /terms
+\f1\fs24  and 
+\f2\fs26 /privacy-policy
+\f1\fs24  pages (simple Next.js pages)\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Add a LinkedIn or business Instagram later if desired\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Set up a 
+\f2\fs26 mailto:
+\f1\fs24  link in the Contact section so it opens email clients\
+}

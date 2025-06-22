@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -22,5 +23,54 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+section {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Add extra vertical spacing between sections */
+.section-spacing {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Consistent max width and horizontal padding for content */
+.section-content {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Custom Swiper Carousel Styles */
+.testimonial-swiper {
+  --swiper-navigation-color: #1d4ed8; /* blue-700 */
+  --swiper-pagination-color: #1d4ed8; /* blue-700 */
+  padding-bottom: 3rem; /* Space for pagination */
+}
+
+.testimonial-swiper .swiper-button-prev,
+.testimonial-swiper .swiper-button-next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .testimonial-swiper .swiper-button-prev,
+  .testimonial-swiper .swiper-button-next {
+    display: none;
+  }
 }
