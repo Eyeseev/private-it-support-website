@@ -4,6 +4,7 @@ import { HiDesktopComputer, HiShieldCheck, HiWifi, HiDeviceMobile, HiDatabase, H
 import { InlineWidget } from 'react-calendly';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import Image from "next/image";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -67,15 +68,26 @@ export default function Home() {
 
       {/* About Section */}
       <section className="section-spacing bg-gray-50" id="about">
-        <div className="section-content text-center">
-          <h2 className="text-3xl font-bold mb-4">A Little About Me</h2>
-          <div className="max-w-2xl mx-auto text-left">
-            <p className="text-lg text-gray-800 mb-3">
-              Hello, I'm Victor. After years of being the go-to tech person for friends and family, I started Private IT Support to bring clear, friendly, and effective tech help to everyone.
-            </p>
-            <p className="text-lg text-gray-800">
-              I love helping entrepreneurs and individuals solve frustrating tech problems so they can get back to what matters most. No jargon, no runaround—just honest answers and real solutions.
-            </p>
+        <div className="section-content">
+          <h2 className="text-3xl font-bold mb-12 text-center">About Me</h2>
+          <div className="grid md:grid-cols-3 gap-8 items-center max-w-4xl mx-auto">
+            <div className="md:col-span-1">
+              <Image
+                src="/images/victor-profile.png"
+                alt="A friendly headshot of Victor, the IT support specialist."
+                width={250}
+                height={250}
+                className="rounded-full mx-auto shadow-lg"
+              />
+            </div>
+            <div className="md:col-span-2 text-left">
+              <p className="text-lg text-gray-800 mb-3">
+                Hello, I'm Victor. After years of being the go-to tech person for friends and family, I started Private IT Support to bring clear, friendly, and effective tech help to everyone.
+              </p>
+              <p className="text-lg text-gray-800">
+                I love helping entrepreneurs and individuals solve frustrating tech problems so they can get back to what matters most. No jargon, no runaround—just honest answers and real solutions.
+              </p>
+            </div>
           </div>
         </div>
       </section>
