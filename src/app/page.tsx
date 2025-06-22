@@ -1,6 +1,6 @@
 'use client';
-import { useEffect, useRef } from "react";
-import { HiDesktopComputer, HiShieldCheck, HiWifi, HiDeviceMobile, HiDatabase, HiAcademicCap, HiChatAlt2, HiLightningBolt, HiBadgeCheck, HiUserCircle, HiCalendar } from 'react-icons/hi';
+import { useEffect, useRef, useState } from "react";
+import { HiDesktopComputer, HiShieldCheck, HiWifi, HiDeviceMobile, HiDatabase, HiAcademicCap, HiChatAlt2, HiLightningBolt, HiBadgeCheck, HiUserCircle, HiCalendar, HiMenu, HiX } from 'react-icons/hi';
 import { InlineWidget } from 'react-calendly';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -31,6 +31,7 @@ const testimonials = [
 export default function Home() {
   const calendlyRef = useRef<HTMLDivElement>(null);
   const consultationRef = useRef<HTMLDivElement>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -42,10 +43,90 @@ export default function Home() {
     };
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+      {/* Sticky Navigation Bar */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo/Brand */}
+            <div className="flex-shrink-0">
+              <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }} className="text-xl font-semibold text-blue-900 hover:text-blue-700 transition-colors duration-200">
+                Private IT Support
+              </a>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-800 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                  Services
+                </a>
+                <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-gray-800 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                  About
+                </a>
+                <a href="#testimonials" onClick={(e) => { e.preventDefault(); scrollToSection('testimonials'); }} className="text-gray-800 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                  Testimonials
+                </a>
+                <a href="/contact" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                  Contact
+                </a>
+                <a href="#consultation" onClick={(e) => { e.preventDefault(); scrollToSection('consultation'); }} className="bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-800 transition-colors duration-200">
+                  Book Consultation
+                </a>
+              </div>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-700 hover:text-blue-700 focus:outline-none focus:text-blue-700 transition-colors duration-200"
+              >
+                {isMenuOpen ? (
+                  <HiX className="h-6 w-6" />
+                ) : (
+                  <HiMenu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md border-t border-gray-200/50">
+                <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-800 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors duration-200">
+                  Services
+                </a>
+                <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-gray-800 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors duration-200">
+                  About
+                </a>
+                <a href="#testimonials" onClick={(e) => { e.preventDefault(); scrollToSection('testimonials'); }} className="text-gray-800 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors duration-200">
+                  Testimonials
+                </a>
+                <a href="/contact" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors duration-200">
+                  Contact
+                </a>
+                <a href="#consultation" onClick={(e) => { e.preventDefault(); scrollToSection('consultation'); }} className="bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-800 transition-colors duration-200">
+                  Book Consultation
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="section-spacing bg-blue-900 text-white text-center">
+      <section id="hero" className="section-spacing bg-blue-900 text-white text-center">
         <div className="section-content">
           <h1 className="text-5xl font-semibold mb-4 tracking-tight">Fast, Reliable IT Support for Individuals and Small Businesses</h1>
           <p className="text-xl mb-8 font-medium">Book a free 15-minute consultation and get expert help with slow computers, Wi-Fi issues, and more — no tech jargon.</p>
@@ -58,7 +139,7 @@ export default function Home() {
             </button>
             <a
               href="#services"
-              className="bg-blue-700 text-white font-semibold px-8 py-4 rounded shadow hover:bg-blue-800 transition-all duration-200 text-lg border border-white border-opacity-20 hover:scale-105 hover:shadow-lg"
+              className="bg-transparent text-white font-semibold px-8 py-4 rounded shadow-sm hover:bg-white/10 transition-all duration-200 text-lg border border-white/50 hover:border-white hover:scale-105 hover:shadow-lg"
             >
               See Services
             </a>
@@ -233,12 +314,12 @@ export default function Home() {
       </section>
 
       {/* Contact Info, Navigation, and Legal Footer */}
-      <footer className="section-spacing bg-blue-900 text-white">
+      <footer id="footer" className="section-spacing bg-blue-900 text-white">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
           {/* Contact Info */}
           <div>
             <h4 className="font-semibold mb-2 text-white">Contact</h4>
-            <p>Email: <a href="mailto:victor@privateitsupport.com" className="underline hover:text-gray-300">victor@privateitsupport.com</a></p>
+            <p>Email: <a href="mailto:victor@privateitsupport.com" className="underline hover:text-gray-100 transition-colors duration-200">victor@privateitsupport.com</a></p>
             <p>Serving NYC & Remote Clients</p>
           </div>
 
@@ -246,9 +327,9 @@ export default function Home() {
           <div>
             <h4 className="font-semibold mb-2 text-white">Quick Links</h4>
             <ul className="space-y-1">
-              <li><a href="#services" className="hover:text-gray-300 transition-colors duration-200">Services</a></li>
-              <li><a href="#consultation" className="hover:text-gray-300 transition-colors duration-200">Free Consultation</a></li>
-              <li><a href="#about" className="hover:text-gray-300 transition-colors duration-200">About</a></li>
+              <li><a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="hover:text-gray-100 transition-colors duration-200">Services</a></li>
+              <li><a href="#consultation" onClick={(e) => { e.preventDefault(); scrollToSection('consultation'); }} className="hover:text-gray-100 transition-colors duration-200">Free Consultation</a></li>
+              <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="hover:text-gray-100 transition-colors duration-200">About</a></li>
             </ul>
             {/* Future: Social Media & Newsletter */}
             {/* <div className="mt-4 flex gap-4">
@@ -262,8 +343,8 @@ export default function Home() {
           <div>
             <h4 className="font-semibold mb-2 text-white">Legal</h4>
             <ul className="space-y-1">
-              <li><a href="/privacy-policy" className="hover:text-gray-300 transition-colors duration-200" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-gray-300 transition-colors duration-200" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+              <li><a href="/privacy-policy" className="hover:text-gray-100 transition-colors duration-200" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-gray-100 transition-colors duration-200" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
             </ul>
           </div>
         </div>
