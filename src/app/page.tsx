@@ -1,37 +1,26 @@
 'use client';
-import { useEffect, useRef, useState } from "react";
-import { HiDesktopComputer, HiShieldCheck, HiWifi, HiDeviceMobile, HiDatabase, HiAcademicCap, HiChatAlt2, HiLightningBolt, HiBadgeCheck, HiUserCircle, HiCalendar, HiMenu, HiX } from 'react-icons/hi';
-import { InlineWidget } from 'react-calendly';
+import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import Image from "next/image";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
+import ServiceCard from "@/components/ServiceCard";
+import TestimonialCard from "@/components/TestimonialCard";
+import TrustPoint from "@/components/TrustPoint";
+import NavigationComponent from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import ConsultationSection from "@/components/ConsultationSection";
+import { services } from "@/data/services";
+import { testimonials } from "@/data/testimonials";
+import { trustPoints } from "@/data/trustPoints";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const testimonials = [
-  {
-    quote: "Victor's help was invaluable. He quickly resolved my Wi-Fi issues and set up my new devices with ease.",
-    name: "John Doe",
-    service: "Wi-Fi & Network Help"
-  },
-  {
-    quote: "I've never had a tech support experience this smooth. Victor's advice saved me time and money.",
-    name: "Jane Smith",
-    service: "Computer Tune-Up"
-  },
-  {
-    quote: "Victor's help was invaluable. He quickly resolved my Wi-Fi issues and set up my new devices with ease.",
-    name: "John Doe",
-    service: "Laptop Repair Client"
-  }
-];
-
 export default function Home() {
-  const calendlyRef = useRef<HTMLDivElement>(null);
   const consultationRef = useRef<HTMLDivElement>(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -48,307 +37,112 @@ export default function Home() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMenuOpen(false);
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
-      {/* Sticky Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo/Brand */}
-            <div className="flex-shrink-0">
-              <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }} className="text-xl font-semibold text-blue-900 hover:text-blue-700 transition-colors duration-200">
-                Private IT Support
-              </a>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-800 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors duration-200">
-                  Services
-                </a>
-                <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-gray-800 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors duration-200">
-                  About
-                </a>
-                <a href="#testimonials" onClick={(e) => { e.preventDefault(); scrollToSection('testimonials'); }} className="text-gray-800 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors duration-200">
-                  Testimonials
-                </a>
-                <a href="/contact" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors duration-200">
-                  Contact
-                </a>
-                <a href="#consultation" onClick={(e) => { e.preventDefault(); scrollToSection('consultation'); }} className="bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-800 transition-colors duration-200">
-                  Book Consultation
-                </a>
-              </div>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-blue-700 focus:outline-none focus:text-blue-700 transition-colors duration-200"
-              >
-                {isMenuOpen ? (
-                  <HiX className="h-6 w-6" />
-                ) : (
-                  <HiMenu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md border-t border-gray-200/50">
-                <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-800 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors duration-200">
-                  Services
-                </a>
-                <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-gray-800 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors duration-200">
-                  About
-                </a>
-                <a href="#testimonials" onClick={(e) => { e.preventDefault(); scrollToSection('testimonials'); }} className="text-gray-800 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors duration-200">
-                  Testimonials
-                </a>
-                <a href="/contact" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors duration-200">
-                  Contact
-                </a>
-                <a href="#consultation" onClick={(e) => { e.preventDefault(); scrollToSection('consultation'); }} className="bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-800 transition-colors duration-200">
-                  Book Consultation
-                </a>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
+      {/* Navigation */}
+      <NavigationComponent scrollToSection={scrollToSection} />
 
       {/* Hero Section */}
-      <section id="hero" className="section-spacing bg-blue-900 text-white text-center">
-        <div className="section-content">
-          <h1 className="text-5xl font-semibold mb-4 tracking-tight">Fast, Reliable IT Support for Individuals and Small Businesses</h1>
-          <p className="text-xl mb-8 font-medium">Book a free 15-minute consultation and get expert help with slow computers, Wi-Fi issues, and more — no tech jargon.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => consultationRef.current?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-blue-900 font-semibold px-8 py-4 rounded shadow hover:bg-blue-100 transition-all duration-200 text-lg cursor-pointer hover:scale-105 hover:shadow-lg"
-            >
-              Book a Free Consultation
-            </button>
-            <a
-              href="#services"
-              className="bg-transparent text-white font-semibold px-8 py-4 rounded shadow-sm hover:bg-white/10 transition-all duration-200 text-lg border border-white/50 hover:border-white hover:scale-105 hover:shadow-lg"
-            >
-              See Services
-            </a>
-          </div>
-        </div>
-      </section>
+      <HeroSection onBookConsultation={() => consultationRef.current?.scrollIntoView({ behavior: 'smooth' })} />
 
       {/* About Section */}
-      <section className="section-spacing bg-gray-50" id="about">
-        <div className="section-content">
-          <h2 className="text-3xl font-semibold mb-8 text-center">About Me</h2>
-          <div className="grid md:grid-cols-3 gap-8 items-center max-w-4xl mx-auto">
-            <div className="md:col-span-1">
-              <Image
-                src="/images/victor-profile.png"
-                alt="A friendly headshot of Victor, the IT support specialist."
-                width={250}
-                height={250}
-                className="rounded-full mx-auto shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-              />
-            </div>
-            <div className="md:col-span-2 text-left">
-              <p className="text-lg text-gray-800 mb-3">
-                Hello, I'm Victor. After years of being the go-to tech person for friends and family, I started Private IT Support to bring clear, friendly, and effective tech help to everyone.
-              </p>
-              <p className="text-lg text-gray-800">
-                I love helping entrepreneurs and individuals solve frustrating tech problems so they can get back to what matters most. No jargon, no runaround—just honest answers and real solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AnimateOnScroll>
+        <AboutSection />
+      </AnimateOnScroll>
 
       {/* Services Section */}
-      <section className="section-spacing bg-white" id="services">
-        <div className="section-content">
-          <h2 className="text-3xl font-semibold mb-8 text-center">Services</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-start transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1">
-              <div className="flex items-center mb-3 text-blue-700 text-2xl"><HiDesktopComputer className="mr-2" /> Computer Tune-Up</div>
-              <p className="mb-2 text-gray-800">Speed up slow computers, remove junk, and optimize performance for a smoother experience.</p>
-              <p className="mb-4 text-gray-600 text-base">Great for: Anyone frustrated by laggy or unresponsive devices.</p>
-              <p className="mb-4 font-semibold text-blue-900">$99 flat rate</p>
-              <a href="#consultation" className="mt-auto bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 transition-all duration-200 font-semibold cursor-pointer hover:shadow-md">Book Now</a>
-            </div>
-            {/* Service 2 */}
-            <div className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-start transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1">
-              <div className="flex items-center mb-3 text-blue-700 text-2xl"><HiWifi className="mr-2" /> Wi-Fi & Network Help</div>
-              <p className="mb-2 text-gray-800">Fix connection issues, dead zones, or slow speeds so you can work and stream without interruption.</p>
-              <p className="mb-4 text-gray-600 text-base">Great for: Home offices, apartments, or anyone with spotty Wi-Fi.</p>
-              <p className="mb-4 font-semibold text-blue-900">$89 per visit</p>
-              <a href="#consultation" className="mt-auto bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 transition-all duration-200 font-semibold cursor-pointer hover:shadow-md">Book Now</a>
-            </div>
-            {/* Service 3 */}
-            <div className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-start transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1">
-              <div className="flex items-center mb-3 text-blue-700 text-2xl"><HiShieldCheck className="mr-2" /> Security & Virus Removal</div>
-              <p className="mb-2 text-gray-800">Remove malware, secure your devices, and get peace of mind with expert protection.</p>
-              <p className="mb-4 text-gray-600 text-base">Great for: Anyone worried about scams, pop-ups, or online threats.</p>
-              <p className="mb-4 font-semibold text-blue-900">$109 flat rate</p>
-              <a href="#consultation" className="mt-auto bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 transition-all duration-200 font-semibold cursor-pointer hover:shadow-md">Book Now</a>
-            </div>
-            {/* Service 4 */}
-            <div className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-start transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1">
-              <div className="flex items-center mb-3 text-blue-700 text-2xl"><HiAcademicCap className="mr-2" /> New Device Setup & Training</div>
-              <p className="mb-2 text-gray-800">Get new tech set up right and learn how to use it with patient, jargon-free guidance.</p>
-              <p className="mb-4 text-gray-600 text-base">Great for: New device owners or anyone needing a tech confidence boost.</p>
-              <p className="mb-4 font-semibold text-blue-900">$79 per session</p>
-              <a href="#consultation" className="mt-auto bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 transition-all duration-200 font-semibold cursor-pointer hover:shadow-md">Book Now</a>
-            </div>
-            {/* Service 5 */}
-            <div className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-start transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1">
-              <div className="flex items-center mb-3 text-blue-700 text-2xl"><HiDatabase className="mr-2" /> Data Backup & Recovery</div>
-              <p className="mb-2 text-gray-800">Prevent data loss before it happens—or get help recovering lost files from failing drives or accidental deletion.</p>
-              <p className="mb-4 text-gray-600 text-base">Great for: Anyone without a backup plan or dealing with file loss.</p>
-              <p className="mb-4 font-semibold text-blue-900">$99+ depending on complexity</p>
-              <a href="#consultation" className="mt-auto bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 transition-all duration-200 font-semibold cursor-pointer hover:shadow-md">Book Now</a>
-            </div>
-            {/* Service 6 */}
-            <div className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-start transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1">
-              <div className="flex items-center mb-3 text-blue-700 text-2xl"><HiDeviceMobile className="mr-2" /> Mobile Device Help</div>
-              <p className="mb-2 text-gray-800">Get expert help with phone or tablet setup, storage issues, iCloud/Google accounts, and syncing across devices.</p>
-              <p className="mb-4 text-gray-600 text-base">Great for: Anyone struggling with phones, tablets, or smart tech.</p>
-              <p className="mb-4 font-semibold text-blue-900">$69 per session</p>
-              <a href="#consultation" className="mt-auto bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 transition-all duration-200 font-semibold cursor-pointer hover:shadow-md">Book Now</a>
+      <AnimateOnScroll>
+        <section className="section-spacing bg-white" id="services">
+          <div className="section-content">
+            <h2 className="text-3xl font-semibold mb-8 text-center">Services</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <AnimateOnScroll key={index} delay={index * 0.1}>
+                  <ServiceCard
+                    icon={service.icon}
+                    title={service.title}
+                    description={service.description}
+                    audience={service.audience}
+                    price={service.price}
+                  />
+                </AnimateOnScroll>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimateOnScroll>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="section-spacing bg-white">
-        <div className="section-content">
-          <h2 className="text-3xl font-semibold mb-8 text-center text-gray-900">
-            What My Clients Say
-          </h2>
-          <div className="max-w-2xl mx-auto relative">
-            <Swiper
-              modules={[Navigation, Pagination]}
-              navigation
-              pagination={{ clickable: true }}
-              loop={true}
-              spaceBetween={30}
-              slidesPerView={1}
-              className="testimonial-swiper"
-            >
-              {testimonials.map((testimonial, index) => (
-                <SwiperSlide key={index}>
-                  <blockquote className="bg-gray-50 p-6 rounded-lg shadow text-center min-h-[220px] flex flex-col justify-center items-center transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg">
-                    <p className="text-xl text-gray-800 italic mb-6">"{testimonial.quote}"</p>
-                    <footer className="mt-auto">
-                      <p className="font-semibold text-blue-900">— {testimonial.name}</p>
-                      <p className="text-sm text-gray-600">{testimonial.service}</p>
-                    </footer>
-                  </blockquote>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+      <AnimateOnScroll>
+        <section id="testimonials" className="section-spacing bg-white">
+          <div className="section-content">
+            <h2 className="text-3xl font-semibold mb-8 text-center text-gray-900">
+              What My Clients Say
+            </h2>
+            <div className="max-w-2xl mx-auto relative">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                navigation
+                pagination={{ clickable: true }}
+                loop={true}
+                spaceBetween={30}
+                slidesPerView={1}
+                className="testimonial-swiper"
+              >
+                {testimonials.map((testimonial, index) => (
+                  <SwiperSlide key={index}>
+                    <TestimonialCard
+                      quote={testimonial.quote}
+                      name={testimonial.name}
+                      service={testimonial.service}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimateOnScroll>
 
       {/* Why Trust Us Section */}
-      <section id="why-trust" className="section-spacing bg-gray-100">
-        <div className="section-content">
-          <h2 className="text-3xl font-semibold mb-8 text-center text-gray-900">
-            Why Clients Trust Private IT Support
-          </h2>
-          <ul className="text-left space-y-5 text-lg max-w-2xl mx-auto text-gray-800">
-            <li className="flex items-start transition-all duration-200 hover:translate-x-1">
-              <HiChatAlt2 className="text-blue-700 h-7 w-7 mr-4 flex-shrink-0" />
-              <span><strong>Clear, honest communication</strong> — no tech jargon or confusing lingo.</span>
-            </li>
-            <li className="flex items-start transition-all duration-200 hover:translate-x-1">
-              <HiLightningBolt className="text-blue-700 h-7 w-7 mr-4 flex-shrink-0" />
-              <span><strong>Fast service with real solutions</strong> — no shortcuts or guesswork.</span>
-            </li>
-            <li className="flex items-start transition-all duration-200 hover:translate-x-1">
-              <HiBadgeCheck className="text-blue-700 h-7 w-7 mr-4 flex-shrink-0" />
-              <span><strong>5+ years of hands-on experience</strong> helping individuals and small businesses get back to work.</span>
-            </li>
-            <li className="flex items-start transition-all duration-200 hover:translate-x-1">
-              <HiUserCircle className="text-blue-700 h-7 w-7 mr-4 flex-shrink-0" />
-              <span><strong>One-on-one support from a real tech</strong> — not a chatbot or offshore call center.</span>
-            </li>
-            <li className="flex items-start transition-all duration-200 hover:translate-x-1">
-              <HiCalendar className="text-blue-700 h-7 w-7 mr-4 flex-shrink-0" />
-              <span><strong>Flexible booking</strong> — schedule when it works for you, online or in person.</span>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <AnimateOnScroll>
+        <section id="why-trust" className="section-spacing bg-gray-100">
+          <div className="section-content">
+            <h2 className="text-3xl font-semibold mb-8 text-center text-gray-900">
+              Why Clients Trust Private IT Support
+            </h2>
+            <ul className="text-left space-y-5 text-lg max-w-2xl mx-auto text-gray-800">
+              {trustPoints.map((point, index) => (
+                <TrustPoint key={index} icon={point.icon}>
+                  {point.content}
+                </TrustPoint>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </AnimateOnScroll>
 
       {/* Free Consultation CTA */}
-      <section ref={consultationRef} id="consultation" className="section-spacing bg-blue-100 text-center">
-        <h2 className="text-3xl font-semibold mb-4">Book Your Free 15-Minute IT Consultation</h2>
-        <p className="mb-8 text-lg">Use this free 15-min call to find out if I can save you time, money, or frustration. No obligation—just friendly advice and honest answers.</p>
-        <div className="mx-auto" style={{ width: '100%', maxWidth: 1200 }}>
-          <InlineWidget
-            url="https://calendly.com/victor-privateitsupport/consultation"
-            styles={{ minWidth: '320px', height: '630px' }}
-          />
-        </div>
-      </section>
+      <AnimateOnScroll>
+        <ConsultationSection consultationRef={consultationRef} />
+      </AnimateOnScroll>
 
       {/* Packages (Coming Soon) */}
-      <section className="section-spacing bg-gray-200 text-center">
-        <div className="section-content">
-          <h2 className="text-3xl font-semibold mb-4">Service Packages <span className="text-base font-normal">(Coming Soon)</span></h2>
-          <p>Bundled IT support offerings for even more value. Stay tuned!</p>
-        </div>
-      </section>
-
-      {/* Contact Info, Navigation, and Legal Footer */}
-      <footer id="footer" className="section-spacing bg-blue-900 text-white">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold mb-2 text-white">Contact</h4>
-            <p>Email: <a href="mailto:victor@privateitsupport.com" className="underline hover:text-gray-100 transition-colors duration-200">victor@privateitsupport.com</a></p>
-            <p>Serving NYC & Remote Clients</p>
+      <AnimateOnScroll>
+        <section className="section-spacing bg-gray-200 text-center">
+          <div className="section-content">
+            <h2 className="text-3xl font-semibold mb-4">Service Packages <span className="text-base font-normal">(Coming Soon)</span></h2>
+            <p>Bundled IT support offerings for even more value. Stay tuned!</p>
           </div>
+        </section>
+      </AnimateOnScroll>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-2 text-white">Quick Links</h4>
-            <ul className="space-y-1">
-              <li><a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="hover:text-gray-100 transition-colors duration-200">Services</a></li>
-              <li><a href="#consultation" onClick={(e) => { e.preventDefault(); scrollToSection('consultation'); }} className="hover:text-gray-100 transition-colors duration-200">Free Consultation</a></li>
-              <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="hover:text-gray-100 transition-colors duration-200">About</a></li>
-            </ul>
-            {/* Future: Social Media & Newsletter */}
-            {/* <div className="mt-4 flex gap-4">
-              <a href="#" aria-label="Facebook" className="hover:text-gray-300">FB</a>
-              <a href="#" aria-label="Instagram" className="hover:text-gray-300">IG</a>
-              <a href="#" aria-label="Newsletter" className="hover:text-gray-300">Newsletter</a>
-            </div> */}
-          </div>
-
-          {/* Legal / Placeholder Links */}
-          <div>
-            <h4 className="font-semibold mb-2 text-white">Legal</h4>
-            <ul className="space-y-1">
-              <li><a href="/privacy-policy" className="hover:text-gray-100 transition-colors duration-200" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-gray-100 transition-colors duration-200" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <AnimateOnScroll>
+        <Footer scrollToSection={scrollToSection} />
+      </AnimateOnScroll>
     </div>
   );
 }
