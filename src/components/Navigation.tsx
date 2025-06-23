@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { HiMenu, HiX } from 'react-icons/hi';
 
 interface NavigationProps {
@@ -9,19 +10,24 @@ interface NavigationProps {
 
 export default function Navigation({ scrollToSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomepage = pathname === '/';
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault();
-    scrollToSection(sectionId);
+    if (isHomepage) {
+      e.preventDefault();
+      scrollToSection(sectionId);
+    }
+    // On other pages, the default anchor link behavior will handle navigation.
     setIsMenuOpen(false);
   };
 
   const navLinks = [
-    { href: '#services', label: 'Services', onClick: (e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, 'services') },
-    { href: '#about', label: 'About', onClick: (e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, 'about') },
-    { href: '#testimonials', label: 'Testimonials', onClick: (e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, 'testimonials') },
-    { href: '/contact', label: 'Contact', target: '_blank', rel: 'noopener noreferrer' },
-    { href: '#consultation', label: 'Book Consultation', onClick: (e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, 'consultation'), isButton: true }
+    { href: isHomepage ? '#services' : '/#services', label: 'Services', sectionId: 'services', isScrollLink: true },
+    { href: isHomepage ? '#about' : '/#about', label: 'About', sectionId: 'about', isScrollLink: true },
+    { href: isHomepage ? '#testimonials' : '/#testimonials', label: 'Testimonials', sectionId: 'testimonials', isScrollLink: true },
+    { href: '/contact', label: 'Contact' },
+    { href: isHomepage ? '#consultation' : '/#consultation', label: 'Book Consultation', sectionId: 'consultation', isButton: true, isScrollLink: true }
   ];
 
   return (
@@ -31,8 +37,8 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
             <a 
-              href="#" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }} 
+              href={isHomepage ? "#" : "/"} 
+              onClick={isHomepage ? (e) => handleNavClick(e, 'hero') : undefined} 
               className="text-xl font-semibold text-blue-900 hover:text-blue-700 transition-colors duration-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-400 focus-visible:ring-offset-2"
               aria-label="Go to homepage"
             >
@@ -47,9 +53,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
                 <a
                   key={index}
                   href={link.href}
-                  onClick={link.onClick}
-                  target={link.target}
-                  rel={link.rel}
+                  onClick={link.isScrollLink ? (e) => handleNavClick(e, link.sectionId!) : undefined}
                   className={`${
                     link.isButton 
                       ? 'bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-800 transition-colors duration-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-400 focus-visible:ring-offset-2'
@@ -87,9 +91,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
                 <a
                   key={index}
                   href={link.href}
-                  onClick={link.onClick}
-                  target={link.target}
-                  rel={link.rel}
+                  onClick={link.isScrollLink ? (e) => handleNavClick(e, link.sectionId!) : undefined}
                   className={`${
                     link.isButton 
                       ? 'bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-800 transition-colors duration-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-400 focus-visible:ring-offset-2'
