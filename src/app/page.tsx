@@ -57,7 +57,7 @@ export default function Home() {
         <section className="section-spacing bg-white" id="services">
           <div className="section-content">
             <h2 className="text-3xl font-semibold mb-8 text-center">Services</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
               {services.map((service, index) => (
                 <AnimateOnScroll key={index} delay={index * 0.1}>
                   <ServiceCard

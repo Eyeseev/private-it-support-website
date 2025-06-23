@@ -12,7 +12,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ icon, title, description, audience, price }: ServiceCardProps) {
   return (
-    <div className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-start transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1">
+    <div className="h-full bg-gray-50 rounded-xl shadow p-6 flex flex-col items-start transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1">
       <div className="flex items-center mb-3 text-blue-700 text-2xl">
         {icon} {title}
       </div>
