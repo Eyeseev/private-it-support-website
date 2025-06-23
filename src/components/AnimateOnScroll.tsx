@@ -7,14 +7,18 @@ interface AnimateOnScrollProps {
   children: React.ReactNode;
   delay?: number;
   duration?: number;
+  initialX?: number;
   initialY?: number;
+  className?: string;
 }
 
 export default function AnimateOnScroll({
   children,
   delay = 0,
   duration = 0.5,
-  initialY = 30,
+  initialX = 0,
+  initialY = 20,
+  className = ''
 }: AnimateOnScrollProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -45,6 +49,7 @@ export default function AnimateOnScroll({
         initial="hidden"
         animate={controls}
         variants={variants}
+        className={className}
       >
         {children}
       </motion.div>
