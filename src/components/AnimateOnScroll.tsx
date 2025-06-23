@@ -7,7 +7,6 @@ interface AnimateOnScrollProps {
   children: React.ReactNode;
   delay?: number;
   duration?: number;
-  initialX?: number;
   initialY?: number;
   className?: string;
 }
@@ -16,7 +15,6 @@ export default function AnimateOnScroll({
   children,
   delay = 0,
   duration = 0.5,
-  initialX = 0,
   initialY = 20,
   className = ''
 }: AnimateOnScrollProps) {
