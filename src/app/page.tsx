@@ -225,16 +225,6 @@ export default function Home() {
         <ConsultationSection consultationRef={consultationRef} />
       </AnimateOnScroll>
 
-      {/* Packages (Coming Soon) */}
-      <AnimateOnScroll>
-        <section className="section-spacing bg-gray-200 text-center">
-          <div className="section-content">
-            <h2 className="text-3xl font-semibold mb-4">Service Packages <span className="text-base font-normal">(Coming Soon)</span></h2>
-            <p>Bundled IT support offerings for even more value. Stay tuned!</p>
-          </div>
-        </section>
-      </AnimateOnScroll>
-
       {/* Footer */}
       <AnimateOnScroll>
         <Footer scrollToSection={scrollToSection} />
