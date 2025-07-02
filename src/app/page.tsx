@@ -59,7 +59,7 @@ export default function Home() {
 
       {/* Services Section */}
       <AnimateOnScroll>
-        <section className="section-spacing bg-white" id="services">
+        <section className="section-spacing bg-[#dbe9fd]" id="services">
           <div className="section-content space-y-16">
             <h2 className="text-3xl font-semibold mb-8 text-center">Services</h2>
 
