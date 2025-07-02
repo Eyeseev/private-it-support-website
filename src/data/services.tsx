@@ -1,70 +1,104 @@
 import React from 'react';
-import { HiDesktopComputer, HiWifi, HiShieldCheck, HiAcademicCap, HiDatabase, HiDeviceMobile } from 'react-icons/hi';
+import { HiOutlineGlobeAlt, HiOutlineArrowPath, HiOutlineShieldCheck, HiOutlineWrenchScrewdriver, HiOutlineDocumentText, HiOutlineUserGroup, HiOutlineCheckCircle, HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
 
-export interface Service {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  audience: string;
-  price: string;
-}
+// --- Core Website Package ---
+export const coreWebsitePackage = {
+  icon: <HiOutlineGlobeAlt className="mr-2" />,
+  title: 'Launch-Ready Website Package',
+  price: '$200',
+  description: 'A fast, affordable 1-page site built for small business owners, freelancers, and creators who need a clean online presence — fast.',
+  features: [
+    '1-page responsive site (Home, About, Services, Contact)',
+    'Mobile-friendly + fast-loading',
+    'Hosted on Vercel.com',
+    'Domain connection + basic SEO setup',
+    'One round of revisions',
+    'Delivered in 3–5 business days',
+  ],
+};
 
-export const services: Service[] = [
-  {
-    icon: <HiDesktopComputer className="mr-2" />,
-    title: "Computer Tune-Up & Performance Optimization",
-    description: "Transform your slow computer into a speed demon. I'll clean up junk files, optimize startup programs, update drivers, and fine-tune your system for maximum performance. Perfect for computers that take forever to boot up or struggle with basic tasks.",
-    audience: "Great for: Anyone frustrated by laggy computers, slow startups, or programs that freeze frequently.",
-    price: "$99 flat rate"
-  },
-  {
-    icon: <HiWifi className="mr-2" />,
-    title: "Wi-Fi & Network Troubleshooting",
-    description: "Say goodbye to dead zones and buffering. I'll diagnose connection issues, optimize router settings, extend your network coverage, and ensure you get the speeds you're paying for. Includes setup of mesh networks and range extenders if needed.",
-    audience: "Great for: Home offices, apartments with thick walls, or anyone experiencing spotty Wi-Fi coverage.",
-    price: "$89 per visit"
-  },
-  {
-    icon: <HiShieldCheck className="mr-2" />,
-    title: "Security & Virus Removal",
-    description: "Protect your digital life from threats. I'll remove malware, viruses, and spyware, set up comprehensive security software, configure firewalls, and teach you how to spot phishing attempts. Includes ongoing security recommendations.",
-    audience: "Great for: Anyone worried about online scams, experiencing pop-ups, or wanting to protect sensitive data.",
-    price: "$109 flat rate"
-  },
-  {
-    icon: <HiAcademicCap className="mr-2" />,
-    title: "New Device Setup & Tech Training",
-    description: "Get your new tech working perfectly from day one. I'll set up computers, phones, tablets, and smart devices, transfer your data safely, configure accounts and settings, and provide patient training on how to use everything effectively.",
-    audience: "Great for: New device owners, tech beginners, or anyone wanting to get more from their gadgets.",
-    price: "$79 per session"
-  },
-  {
-    icon: <HiDatabase className="mr-2" />,
-    title: "Data Backup & Recovery Solutions",
-    description: "Never lose important files again. I'll set up automated backup systems, recover lost data from failing drives, and create disaster recovery plans. Includes cloud backup setup and local backup solutions for complete protection.",
-    audience: "Great for: Anyone without a backup plan, dealing with file loss, or storing important documents and photos.",
-    price: "$99+ depending on complexity"
-  },
-  {
-    icon: <HiDeviceMobile className="mr-2" />,
-    title: "Mobile Device Support & Optimization",
-    description: "Master your mobile devices. I'll help with phone and tablet setup, storage management, app organization, iCloud/Google account configuration, and syncing across all your devices. Includes troubleshooting for common mobile issues.",
-    audience: "Great for: Anyone struggling with phones, tablets, or smart home devices.",
-    price: "$69 per session"
-  }
+// --- Add-Ons ---
+export const addOns = [
+  { title: 'Booking Form Integration', price: '$30', details: 'Connects to your calendar or email.' },
+  { title: 'Google Business Profile Help', price: '$20', details: 'Setup or improve your Google Business listing.' },
+  { title: 'Contact Form + Auto-Reply', price: '$25', details: 'Visitors get an automatic confirmation email.' },
+  { title: 'Instagram Feed Embed', price: '$20', details: 'Displays your latest posts directly on your site.' },
+  { title: 'Analytics Setup', price: '$20', details: 'Google Analytics or Vercel Insights setup.' },
+  { title: 'Extra Page (e.g., FAQ, Blog, Gallery)', price: '$50', details: 'Add a fully custom second page.' },
+  { title: 'Image Portfolio / Gallery Grid', price: '$30', details: 'Clickable photo grid layout to showcase your work.' },
+  { title: 'Testimonials Slider', price: '$25', details: 'Rotating reviews or quotes section.' },
+  { title: 'Cookie Consent Banner', price: '$10', details: 'Privacy-compliant cookie pop-up.' },
 ];
 
-// Simplified service data for contact page overview
+// --- Website Audit & Redesign ---
+export const websiteRedesign = {
+  icon: <HiOutlineArrowPath className="mr-2" />,
+  title: 'Website Audit & Full Redesign',
+  price: '$300',
+  description: 'Perfect for older or DIY sites that need a full refresh. You\'ll get a custom-built, modern site based on your content and goals.',
+  features: [
+    'Complete rebuild from scratch',
+    'Fully responsive + clean modern layout',
+    'Updated structure and content flow',
+    'Basic SEO + performance improvements',
+    'Delivered in 7–10 days',
+    'One round of revisions',
+    'Client must provide existing site URL and all necessary content.',
+  ],
+};
+
+// --- Care Plans ---
+export interface CarePlan {
+  icon: React.ReactNode;
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+}
+
+export const carePlans: CarePlan[] = [
+  {
+    icon: <HiOutlineShieldCheck className="mr-2" />,
+    title: 'Basic Care Plan',
+    price: '$50/month',
+    description: 'Keep your site healthy, secure, and updated.',
+    features: [
+      '1 content change per month (text/image/link)',
+      'Monthly check-up + backup',
+      'Performance monitoring',
+      'Tech updates (scripts/plugins)',
+      'Priority support (48-hr turnaround)',
+    ],
+  },
+  {
+    icon: <HiOutlineWrenchScrewdriver className="mr-2" />,
+    title: 'Care Plan Plus',
+    price: '$75/month',
+    description: 'Includes everything in Basic plus:',
+    features: [
+      '2 monthly content changes',
+      'One 15-minute tech help call each month',
+    ],
+  },
+];
+
+// --- One-Time Tech Services ---
+export const oneTimeTechServices = [
+  { title: 'Domain Setup Help', price: '$40', details: 'Help purchasing and configuring a domain name.' },
+  { title: 'Remote Tech Support (1 hour)', price: '$50', details: 'General IT help via Zoom or screen share.' },
+  { title: 'Business Tools Mini Consult', price: '$30', details: 'Help picking apps or software for your workflow.' },
+];
+
+// (Legacy) For contact page overview, keep as-is for now
 export interface ServiceOverview {
   title: string;
   description: string;
 }
 
 export const serviceOverviews: ServiceOverview[] = [
-  { title: 'Computer Tune-Up', description: 'Speed up slow computers and optimize performance' },
-  { title: 'Wi-Fi & Network Help', description: 'Fix connection issues and improve network performance' },
-  { title: 'Security & Virus Removal', description: 'Remove malware and secure your devices' },
-  { title: 'Device Setup & Training', description: 'Get new tech set up with patient guidance' },
-  { title: 'Data Backup & Recovery', description: 'Protect your data and recover lost files' },
-  { title: 'Mobile Device Help', description: 'Expert help with phones and tablets' }
+  { title: 'Launch-Ready Website', description: '1-page site for small business or creators' },
+  { title: 'Website Redesign', description: 'Full rebuild for outdated or DIY sites' },
+  { title: 'Care Plans', description: 'Ongoing site maintenance & support' },
+  { title: 'Add-Ons', description: 'Booking, analytics, forms, and more' },
+  { title: 'One-Time Tech Help', description: 'Domain, remote support, and consulting' },
 ]; 

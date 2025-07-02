@@ -11,9 +11,15 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ConsultationSection from "@/components/ConsultationSection";
-import { services } from "@/data/services";
 import { testimonials } from "@/data/testimonials";
 import { trustPoints } from "@/data/trustPoints";
+import {
+  coreWebsitePackage,
+  addOns,
+  websiteRedesign,
+  carePlans,
+  oneTimeTechServices
+} from "@/data/services";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -55,21 +61,112 @@ export default function Home() {
       {/* Services Section */}
       <AnimateOnScroll>
         <section className="section-spacing bg-white" id="services">
-          <div className="section-content">
+          <div className="section-content space-y-16">
             <h2 className="text-3xl font-semibold mb-8 text-center">Services</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
-              {services.map((service, index) => (
-                <AnimateOnScroll key={index} delay={index * 0.1} className="h-full">
-                  <ServiceCard
-                    icon={service.icon}
-                    title={service.title}
-                    description={service.description}
-                    audience={service.audience}
-                    price={service.price}
-                  />
-                </AnimateOnScroll>
-              ))}
+
+            {/* Core Website Package */}
+            <div className="max-w-2xl mx-auto">
+              <div className="bg-gray-50 rounded-xl shadow p-8 flex flex-col items-start mb-8">
+                <div className="flex items-center mb-3 text-blue-700 text-2xl">
+                  {coreWebsitePackage.icon} {coreWebsitePackage.title}
+                </div>
+                <p className="mb-4 text-gray-800 font-medium">{coreWebsitePackage.description}</p>
+                <ul className="mb-4 list-disc list-inside text-gray-700 pl-2">
+                  {coreWebsitePackage.features.map((feature, idx) => (
+                    <li key={idx}>{feature}</li>
+                  ))}
+                </ul>
+                <div className="font-bold text-blue-900 text-lg mb-2">{coreWebsitePackage.price}</div>
+              </div>
             </div>
+
+            {/* Add-Ons */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-center">Add-Ons (Optional Upgrades)</h3>
+              <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="py-2 px-4 text-left font-semibold">Add-On</th>
+                      <th className="py-2 px-4 text-left font-semibold">Price</th>
+                      <th className="py-2 px-4 text-left font-semibold">Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {addOns.map((addon, idx) => (
+                      <tr key={idx} className="border-t border-gray-100">
+                        <td className="py-2 px-4">{addon.title}</td>
+                        <td className="py-2 px-4">{addon.price}</td>
+                        <td className="py-2 px-4">{addon.details}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Website Audit & Redesign */}
+            <div className="max-w-2xl mx-auto">
+              <div className="bg-gray-50 rounded-xl shadow p-8 flex flex-col items-start mb-8">
+                <div className="flex items-center mb-3 text-blue-700 text-2xl">
+                  {websiteRedesign.icon} {websiteRedesign.title}
+                </div>
+                <p className="mb-4 text-gray-800 font-medium">{websiteRedesign.description}</p>
+                <ul className="mb-4 list-disc list-inside text-gray-700 pl-2">
+                  {websiteRedesign.features.map((feature, idx) => (
+                    <li key={idx}>{feature}</li>
+                  ))}
+                </ul>
+                <div className="font-bold text-blue-900 text-lg mb-2">{websiteRedesign.price}</div>
+              </div>
+            </div>
+
+            {/* Care Plans */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-center">Website Care Plans (Monthly)</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                {carePlans.map((plan, idx) => (
+                  <div key={idx} className="bg-gray-50 rounded-xl shadow p-8 flex flex-col items-start">
+                    <div className="flex items-center mb-3 text-blue-700 text-2xl">
+                      {plan.icon} {plan.title}
+                    </div>
+                    <p className="mb-4 text-gray-800 font-medium">{plan.description}</p>
+                    <ul className="mb-4 list-disc list-inside text-gray-700 pl-2">
+                      {plan.features.map((feature, fidx) => (
+                        <li key={fidx}>{feature}</li>
+                      ))}
+                    </ul>
+                    <div className="font-bold text-blue-900 text-lg mb-2">{plan.price}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* One-Time Tech Services */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-center">One-Time Tech Services</h3>
+              <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="py-2 px-4 text-left font-semibold">Service</th>
+                      <th className="py-2 px-4 text-left font-semibold">Price</th>
+                      <th className="py-2 px-4 text-left font-semibold">Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {oneTimeTechServices.map((svc, idx) => (
+                      <tr key={idx} className="border-t border-gray-100">
+                        <td className="py-2 px-4">{svc.title}</td>
+                        <td className="py-2 px-4">{svc.price}</td>
+                        <td className="py-2 px-4">{svc.details}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
           </div>
         </section>
       </AnimateOnScroll>
