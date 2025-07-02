@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import TrustPoint from "@/components/TrustPoint";
 import NavigationComponent from "@/components/Navigation";

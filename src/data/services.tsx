@@ -1,5 +1,5 @@
 import React from 'react';
-import { HiOutlineGlobeAlt, HiOutlineArrowPath, HiOutlineShieldCheck, HiOutlineWrenchScrewdriver, HiOutlineDocumentText, HiOutlineUserGroup, HiOutlineCheckCircle, HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
+import { HiOutlineGlobeAlt, HiOutlineArrowPath, HiOutlineShieldCheck, HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
 // --- Core Website Package ---
 export const coreWebsitePackage = {
