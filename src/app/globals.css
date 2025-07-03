@@ -108,3 +108,30 @@ nav {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
+
+/* Sticky Book Now Button (Mobile Only) */
+.sticky-book-now-btn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 50;
+  background: #1d4ed8; /* blue-700 */
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+  transition: background 0.2s;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 768px) {
+  .sticky-book-now-btn {
+    display: block;
+  }
+}

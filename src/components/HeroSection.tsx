@@ -9,18 +9,28 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onBookConsultation }: HeroSectionProps) {
   return (
-    <section id="hero" className="section-spacing bg-blue-900 text-white text-center" aria-label="Hero Section">
-      <div className="section-content">
+    <section
+      id="hero"
+      className="section-spacing text-white text-center relative overflow-hidden"
+      aria-label="Hero Section"
+      style={{
+        backgroundImage: 'url(/images/chat-gpt-header-8.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 55%', // Adjust as needed to center laptop
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div className="section-content relative z-10">
         <motion.h1
-          className="text-5xl font-semibold mb-4 tracking-tight"
+          className="text-5xl font-semibold mb-12 tracking-tight drop-shadow-lg"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          Professional Websites & Services Built Fast—No Tech Headaches
+          Professional Websites Services - Get Rid of Tech Headaches
         </motion.h1>
-        <p className="text-xl mb-6 font-medium">Need a clean, mobile-friendly website that just works? I help small business owners, freelancers, and creators launch fast, modern websites—with zero hassle, easy to understand, and expert support you can trust.</p>
-        <p className="text-lg mb-8 text-blue-100">Book a free 15-minute consultation and see how quickly we can solve your tech problems.</p>
+        <p className="text-xl mb-6 font-medium drop-shadow">Need a clean, mobile-friendly website that just works? I help small business owners, freelancers, and creators launch fast, modern websites—with zero hassle, easy to understand, and expert support you can trust.</p>
+        <p className="text-lg mb-8 text-blue-100 drop-shadow">Book a free 15-minute consultation and see how quickly we can solve your tech problems.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={onBookConsultation}

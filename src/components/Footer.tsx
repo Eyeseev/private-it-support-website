@@ -67,6 +67,11 @@ export default function Footer({ scrollToSection }: FooterProps) {
             <li><a href="/privacy-policy" className="hover:text-gray-100 transition-colors duration-200 focus:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2">Privacy Policy</a></li>
             <li><a href="/terms" className="hover:text-gray-100 transition-colors duration-200 focus:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2">Terms of Service</a></li>
           </ul>
+          <div className="mt-4 flex items-center gap-2 text-xs text-gray-300">
+            <span role="img" aria-label="GDPR Compliant" title="GDPR Compliant" className="inline-block align-middle">🛡️</span>
+            <span role="img" aria-label="ADA Accessible" title="ADA Accessible" className="inline-block align-middle">♿</span>
+            <span className="ml-2">Your privacy is protected. GDPR & ADA compliant.</span>
+          </div>
         </div>
       </div>
     </footer>

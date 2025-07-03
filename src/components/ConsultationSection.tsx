@@ -19,6 +19,12 @@ export default function ConsultationSection({ consultationRef }: ConsultationSec
           styles={{ minWidth: '320px', height: '630px' }}
         />
       </div>
+      <div className="mt-6 text-base text-gray-700 max-w-xl mx-auto">
+        <p className="mb-2">
+          Prefer to call or text? <a href="tel:516-853-1479" className="underline text-blue-800 hover:text-blue-600 focus:outline-none focus-visible:ring focus-visible:ring-blue-400">516-853-1479</a>
+        </p>
+        <p className="text-sm text-gray-600">After booking, you&#39;ll get a confirmation email. Typical response time: {SITE_CONSTANTS.EMAIL_RESPONSE_TIME}. If urgent, mention it in your booking notes.</p>
+      </div>
     </section>
   );
 } 

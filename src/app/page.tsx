@@ -25,7 +25,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function Home() {
-  const consultationRef = useRef<HTMLDivElement>(null);
+  const consultationRef = useRef<HTMLDivElement | null>(null);
   const [showAddOns, setShowAddOns] = useState(false);
   const [showOneTime, setShowOneTime] = useState(false);
   const [showCarePlans, setShowCarePlans] = useState(false);
@@ -250,6 +250,16 @@ export default function Home() {
       <AnimateOnScroll>
         <Footer scrollToSection={scrollToSection} />
       </AnimateOnScroll>
+
+      <button
+        className="sticky-book-now-btn"
+        onClick={() => {
+          consultationRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }}
+        aria-label="Book a free consultation"
+      >
+        Book Now
+      </button>
     </div>
   );
 }
