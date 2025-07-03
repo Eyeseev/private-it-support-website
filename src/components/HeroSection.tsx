@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   onBookConsultation: () => void;
@@ -10,8 +11,15 @@ export default function HeroSection({ onBookConsultation }: HeroSectionProps) {
   return (
     <section id="hero" className="section-spacing bg-blue-900 text-white text-center" aria-label="Hero Section">
       <div className="section-content">
-        <h1 className="text-5xl font-semibold mb-4 tracking-tight">Fast, Reliable IT Support That Actually Works</h1>
-        <p className="text-xl mb-6 font-medium">Stop struggling with slow computers, Wi-Fi issues, and tech headaches. Get expert help from a real person who speaks your language—not tech jargon.</p>
+        <motion.h1
+          className="text-5xl font-semibold mb-4 tracking-tight"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          Professional Websites & Services Built Fast—No Tech Headaches
+        </motion.h1>
+        <p className="text-xl mb-6 font-medium">Need a clean, mobile-friendly website that just works? I help small business owners, freelancers, and creators launch fast, modern websites—with zero hassle, easy to understand, and expert support you can trust.</p>
         <p className="text-lg mb-8 text-blue-100">Book a free 15-minute consultation and see how quickly we can solve your tech problems.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
