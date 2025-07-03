@@ -27,6 +27,8 @@ import 'swiper/css/pagination';
 export default function Home() {
   const consultationRef = useRef<HTMLDivElement>(null);
   const [showAddOns, setShowAddOns] = useState(false);
+  const [showOneTime, setShowOneTime] = useState(false);
+  const [showCarePlans, setShowCarePlans] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -81,6 +83,22 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Website Audit & Redesign */}
+            <div className="max-w-2xl mx-auto">
+              <div className="bg-gray-50 rounded-xl shadow p-8 flex flex-col items-start mb-8">
+                <div className="flex items-center mb-3 text-blue-700 text-2xl">
+                  {websiteRedesign.icon} {websiteRedesign.title}
+                </div>
+                <p className="mb-4 text-gray-800 font-medium">{websiteRedesign.description}</p>
+                <ul className="mb-4 list-disc list-inside text-gray-700 pl-2">
+                  {websiteRedesign.features.map((feature, idx) => (
+                    <li key={idx}>{feature}</li>
+                  ))}
+                </ul>
+                <div className="font-bold text-blue-900 text-lg mb-2">{websiteRedesign.price}</div>
+              </div>
+            </div>
+
             {/* Add-Ons */}
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-center">Add-On Services (Optional Upgrades)</h3>
@@ -108,65 +126,64 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Website Audit & Redesign */}
-            <div className="max-w-2xl mx-auto">
-              <div className="bg-gray-50 rounded-xl shadow p-8 flex flex-col items-start mb-8">
-                <div className="flex items-center mb-3 text-blue-700 text-2xl">
-                  {websiteRedesign.icon} {websiteRedesign.title}
-                </div>
-                <p className="mb-4 text-gray-800 font-medium">{websiteRedesign.description}</p>
-                <ul className="mb-4 list-disc list-inside text-gray-700 pl-2">
-                  {websiteRedesign.features.map((feature, idx) => (
-                    <li key={idx}>{feature}</li>
-                  ))}
-                </ul>
-                <div className="font-bold text-blue-900 text-lg mb-2">{websiteRedesign.price}</div>
+            {/* One-Time Tech Services */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-center">One-Time Tech Services</h3>
+              <div className="max-w-2xl mx-auto">
+                <button
+                  className="w-full flex justify-between items-center px-6 py-4 mb-2 bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-800 transition focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  onClick={() => setShowOneTime(!showOneTime)}
+                  aria-expanded={showOneTime}
+                  aria-controls="onetime-list"
+                >
+                  <span>{showOneTime ? 'Hide One-Time Services' : 'Show One-Time Services'}</span>
+                  <svg className={`ml-4 w-5 h-5 text-white transition-transform duration-200 ${showOneTime ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {showOneTime && (
+                  <ul id="onetime-list" className="divide-y divide-gray-200 rounded-lg bg-white shadow animate-fade-in">
+                    {oneTimeTechServices.map((svc, idx) => (
+                      <li key={idx} className="flex flex-col sm:flex-row sm:justify-between sm:items-center px-6 py-4">
+                        <span className="font-semibold text-blue-900 text-base">{svc.title}</span>
+                        <span className="font-bold text-blue-700 text-base">{svc.price}</span>
+                        <span className="text-gray-700 text-sm sm:ml-4 mt-2 sm:mt-0">{svc.details}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
 
             {/* Care Plans */}
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-center">Website Care Plans (Monthly)</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                {carePlans.map((plan, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-xl shadow p-8 flex flex-col items-start">
-                    <div className="flex items-center mb-3 text-blue-700 text-2xl">
-                      {plan.icon} {plan.title}
-                    </div>
-                    <p className="mb-4 text-gray-800 font-medium">{plan.description}</p>
-                    <ul className="mb-4 list-disc list-inside text-gray-700 pl-2">
-                      {plan.features.map((feature, fidx) => (
-                        <li key={fidx}>{feature}</li>
-                      ))}
-                    </ul>
-                    <div className="font-bold text-blue-900 text-lg mb-2">{plan.price}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* One-Time Tech Services */}
-            <div>
-              <h3 className="text-2xl font-semibold mb-4 text-center">One-Time Tech Services</h3>
-              <div className="overflow-x-auto">
-                <table className="min-w-full bg-white border border-gray-200 rounded-lg">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="py-2 px-4 text-left font-semibold">Service</th>
-                      <th className="py-2 px-4 text-left font-semibold">Price</th>
-                      <th className="py-2 px-4 text-left font-semibold">Details</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {oneTimeTechServices.map((svc, idx) => (
-                      <tr key={idx} className="border-t border-gray-100">
-                        <td className="py-2 px-4">{svc.title}</td>
-                        <td className="py-2 px-4">{svc.price}</td>
-                        <td className="py-2 px-4">{svc.details}</td>
-                      </tr>
+              <div className="max-w-3xl mx-auto">
+                <button
+                  className="w-full flex justify-between items-center px-6 py-4 mb-2 bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-800 transition focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  onClick={() => setShowCarePlans(!showCarePlans)}
+                  aria-expanded={showCarePlans}
+                  aria-controls="careplans-list"
+                >
+                  <span>{showCarePlans ? 'Hide Care Plans' : 'Show Care Plans'}</span>
+                  <svg className={`ml-4 w-5 h-5 text-white transition-transform duration-200 ${showCarePlans ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {showCarePlans && (
+                  <div id="careplans-list" className="grid grid-cols-1 sm:grid-cols-2 gap-8 animate-fade-in">
+                    {carePlans.map((plan, idx) => (
+                      <div key={idx} className="bg-gray-50 rounded-xl shadow p-8 flex flex-col items-start">
+                        <div className="flex items-center mb-3 text-blue-700 text-2xl">
+                          {plan.icon} {plan.title}
+                        </div>
+                        <p className="mb-4 text-gray-800 font-medium">{plan.description}</p>
+                        <ul className="mb-4 list-disc list-inside text-gray-700 pl-2">
+                          {plan.features.map((feature, fidx) => (
+                            <li key={fidx}>{feature}</li>
+                          ))}
+                        </ul>
+                        <div className="font-bold text-blue-900 text-lg mb-2">{plan.price}</div>
+                      </div>
                     ))}
-                  </tbody>
-                </table>
+                  </div>
+                )}
               </div>
             </div>
 
