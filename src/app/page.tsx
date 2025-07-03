@@ -102,7 +102,7 @@ export default function Home() {
             {/* Add-Ons */}
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-center">Add-On Services (Optional Upgrades)</h3>
-              <div className="max-w-2xl mx-auto">
+              <div className="max-w-2xl w-full mx-auto">
                 <button
                   className="w-full flex justify-between items-center px-6 py-4 mb-2 bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-800 transition focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   onClick={() => setShowAddOns(!showAddOns)}
@@ -129,7 +129,7 @@ export default function Home() {
             {/* One-Time Tech Services */}
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-center">One-Time Tech Services</h3>
-              <div className="max-w-2xl mx-auto">
+              <div className="max-w-2xl w-full mx-auto">
                 <button
                   className="w-full flex justify-between items-center px-6 py-4 mb-2 bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-800 transition focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   onClick={() => setShowOneTime(!showOneTime)}
@@ -156,7 +156,7 @@ export default function Home() {
             {/* Care Plans */}
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-center">Website Care Plans (Monthly)</h3>
-              <div className="max-w-3xl mx-auto">
+              <div className="max-w-2xl w-full mx-auto">
                 <button
                   className="w-full flex justify-between items-center px-6 py-4 mb-2 bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-800 transition focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   onClick={() => setShowCarePlans(!showCarePlans)}
