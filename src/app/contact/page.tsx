@@ -32,6 +32,7 @@ export default function Contact() {
               {/* Contact Form/CTA Card */}
               <div className="bg-white rounded-xl shadow p-8 flex flex-col justify-center">
                 <h3 className="font-semibold text-gray-900 mb-4">Quick Contact Form</h3>
+                <p className="text-gray-700 mb-2">Prefer email or text? You can also reach out directly.</p>
                 <p className="text-gray-600 mb-6">For immediate assistance, please use the consultation booking system below.</p>
                 <a 
                   href="https://calendly.com/victor-privateitsupport/consultation" 
@@ -39,22 +40,35 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="bg-[#1c398e] text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-800 transition-all duration-200 inline-block hover:shadow-md hover:scale-105 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   aria-label="Book a free 15-minute consultation (opens in new tab)"
+                  aria-describedby="consult-desc"
                 >
                   Book Free Consultation
                 </a>
-                <p className="text-sm text-gray-500 mt-3">15-minute free consultation to discuss your IT needs.</p>
+                <p id="consult-desc" className="text-sm text-gray-700 mt-3">15-minute free consultation to discuss your IT needs.</p>
               </div>
             </div>
           </div>
         </section>
         {/* FAQ Section */}
         <section className="section-spacing bg-[#dbe9fd]">
-          <div className="section-content">
-            <h2 className="text-xl font-semibold mb-6 text-gray-900">Frequently Asked Questions</h2>
+          <div className="section-content text-[#222]">
+            <h2 className="text-xl font-bold mb-6 text-[#1c398e]">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq) => (
                 <FAQItem key={faq.question} {...faq} />
               ))}
+            </div>
+            <div className="mt-10 flex justify-center">
+              <a 
+                href="https://calendly.com/victor-privateitsupport/consultation" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-[#1c398e] text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-800 transition-all duration-200 inline-block hover:shadow-md hover:scale-105 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                aria-label="Book a free 15-minute consultation (opens in new tab)"
+                aria-describedby="consult-desc"
+              >
+                Book Free Consultation
+              </a>
             </div>
           </div>
         </section>

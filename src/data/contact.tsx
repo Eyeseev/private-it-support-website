@@ -44,10 +44,6 @@ export const contactInfo: ContactInfo[] = [
 
 export const faqs: FAQ[] = [
   {
-    question: 'How quickly can you help me?',
-    answer: 'Most issues can be resolved within 1-2 hours. For urgent matters, I offer same-day service when possible. Remote support is often the fastest option for immediate help.'
-  },
-  {
     question: 'Do you offer remote support?',
     answer: 'Yes! Many issues can be resolved remotely, which is often faster and more convenient. I use secure screen sharing tools and can help with software issues, settings, and troubleshooting without needing to visit in person.'
   },
