@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import AnimateOnScroll from "@/components/AnimateOnScroll";
@@ -26,6 +26,7 @@ import 'swiper/css/pagination';
 
 export default function Home() {
   const consultationRef = useRef<HTMLDivElement>(null);
+  const [showAddOns, setShowAddOns] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -66,6 +67,7 @@ export default function Home() {
             {/* Core Website Package */}
             <div className="max-w-2xl mx-auto">
               <div className="bg-gray-50 rounded-xl shadow p-8 flex flex-col items-start mb-8">
+                <span className="inline-block bg-blue-700 text-white text-sm font-bold px-5 py-2 rounded-full mb-3 tracking-wide shadow-lg">Done-for-You Website</span>
                 <div className="flex items-center mb-3 text-blue-700 text-2xl">
                   {coreWebsitePackage.icon} {coreWebsitePackage.title}
                 </div>
@@ -81,26 +83,28 @@ export default function Home() {
 
             {/* Add-Ons */}
             <div>
-              <h3 className="text-2xl font-semibold mb-4 text-center">Add-Ons (Optional Upgrades)</h3>
-              <div className="overflow-x-auto">
-                <table className="min-w-full bg-white border border-gray-200 rounded-lg">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="py-2 px-4 text-left font-semibold">Add-On</th>
-                      <th className="py-2 px-4 text-left font-semibold">Price</th>
-                      <th className="py-2 px-4 text-left font-semibold">Details</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+              <h3 className="text-2xl font-semibold mb-4 text-center">Add-On Services (Optional Upgrades)</h3>
+              <div className="max-w-2xl mx-auto">
+                <button
+                  className="w-full flex justify-between items-center px-6 py-4 mb-2 bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-800 transition focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  onClick={() => setShowAddOns(!showAddOns)}
+                  aria-expanded={showAddOns}
+                  aria-controls="addons-list"
+                >
+                  <span>{showAddOns ? 'Hide Add-Ons' : 'Show Add-Ons'}</span>
+                  <svg className={`ml-4 w-5 h-5 text-white transition-transform duration-200 ${showAddOns ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {showAddOns && (
+                  <ul id="addons-list" className="divide-y divide-gray-200 rounded-lg bg-white shadow animate-fade-in">
                     {addOns.map((addon, idx) => (
-                      <tr key={idx} className="border-t border-gray-100">
-                        <td className="py-2 px-4">{addon.title}</td>
-                        <td className="py-2 px-4">{addon.price}</td>
-                        <td className="py-2 px-4">{addon.details}</td>
-                      </tr>
+                      <li key={idx} className="flex justify-between items-center px-6 py-4">
+                        <span className="font-semibold text-blue-900 text-base">{addon.title}</span>
+                        <span className="font-bold text-blue-700 text-base">{addon.price}</span>
+                        <span className="text-gray-700 text-sm ml-4">{addon.details}</span>
+                      </li>
                     ))}
-                  </tbody>
-                </table>
+                  </ul>
+                )}
               </div>
             </div>
 
