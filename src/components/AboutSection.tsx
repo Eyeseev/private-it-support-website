@@ -23,7 +23,7 @@ export default function AboutSection() {
           </div>
           <div className="md:col-span-2 text-left">
             <AnimateOnScroll delay={0.3}>
-              <p className="text-lg text-gray-800 mb-2 font-semibold">Hello, I&apos;m Victor.</p>
+              <p className="text-lg text-gray-800 mb-2 font-semibold">Hello, I&#39;m Victor.</p>
               <p className="text-lg text-gray-800 mb-4">
                 I build simple, fast websites for small business owners, freelancers, and creators who want a clean online presence without dealing with tech headaches. Whether you need a brand-new site, a full makeover, or extras like a booking form or photo gallery, I make the process quick, easy, and affordable.
               </p>
