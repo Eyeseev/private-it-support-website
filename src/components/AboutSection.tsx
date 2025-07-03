@@ -33,6 +33,21 @@ export default function AboutSection() {
             </AnimateOnScroll>
           </div>
         </div>
+        {/* Certifications / Tools Badges */}
+        <div className="flex flex-wrap justify-center gap-4 mt-10">
+          <span className="inline-flex items-center px-4 py-2 bg-[#f2f4f6] text-[#1c398e] font-semibold rounded-full shadow text-base border border-[#dbe9fd]">
+            <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#4285F4" strokeWidth="2" fill="white" /><text x="7" y="16" fontSize="8" fill="#4285F4">Google</text></svg>
+            Workspace Certified
+          </span>
+          <span className="inline-flex items-center px-4 py-2 bg-[#f2f4f6] text-[#1c398e] font-semibold rounded-full shadow text-base border border-[#dbe9fd]">
+            <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#00ADEF" strokeWidth="2" fill="white" /><text x="8" y="16" fontSize="8" fill="#00ADEF">Jamf</text></svg>
+            Jamf Ready
+          </span>
+          <span className="inline-flex items-center px-4 py-2 bg-[#f2f4f6] text-[#1c398e] font-semibold rounded-full shadow text-base border border-[#dbe9fd]">
+            <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#5E4FA2" strokeWidth="2" fill="white" /><text x="8" y="16" fontSize="8" fill="#5E4FA2">Okta</text></svg>
+            Okta Specialist
+          </span>
+        </div>
       </div>
     </section>
   );
