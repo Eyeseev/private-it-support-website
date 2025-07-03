@@ -60,6 +60,21 @@ export default function Home() {
         <AboutSection />
       </AnimateOnScroll>
 
+      {/* Free Resource / Lead Magnet Section */}
+      <section className="section-spacing" style={{ background: '#1c398e' }}>
+        <div className="section-content max-w-2xl mx-auto text-center rounded-xl shadow-lg p-10 border border-[#b6d0f7] bg-white">
+          <h2 className="text-2xl font-bold mb-4 text-[#1c398e]">Free Resource for Solopreneurs</h2>
+          <p className="text-lg mb-6 text-gray-800">Get my <span className="font-semibold text-[#1c398e]">Website Launch Checklist for Solopreneurs</span>—a step-by-step PDF to help you launch your site with confidence. Enter your email below to get instant access.</p>
+          <form className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto">
+            <input type="email" placeholder="Your email address" className="flex-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1c398e] text-base" required disabled />
+            <button type="submit" className="bg-[#1c398e] text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-800 transition-all duration-200 shadow-md focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2" disabled>
+              Get the Checklist
+            </button>
+          </form>
+          <p className="text-xs text-gray-500 mt-3">(Coming soon: You&#39;ll get the checklist instantly and occasional tips—unsubscribe anytime.)</p>
+        </div>
+      </section>
+
       {/* Services Section */}
       <AnimateOnScroll>
         <section className="section-spacing bg-[#dbe9fd]" id="services">
