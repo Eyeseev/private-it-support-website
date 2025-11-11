@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --surface-base: #f9f9f9;
+  --surface-muted: #f3f4f7;
+  --surface-card: #ffffff;
+  --surface-contrast: #e2e6ef;
+  --surface-outline: rgba(24, 39, 68, 0.12);
+  --text-primary: #1f2933;
+  --text-secondary: #3f4c5f;
+  --text-subtle: #64748b;
+  --accent: #2563ff;
+  --accent-dark: #1e48d6;
+  --accent-soft: rgba(37, 99, 255, 0.12);
+  --shadow-soft: 0 18px 36px rgba(15, 23, 42, 0.12);
+  --shadow-hover: 0 22px 44px rgba(37, 99, 255, 0.25);
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.75rem;
+  --grid-size: 28px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--surface-base);
+  --color-foreground: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-color: var(--surface-base);
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(30, 64, 175, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(30, 64, 175, 0.06) 1px,
+      transparent 1px
+    );
+  background-size: var(--grid-size) var(--grid-size);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+    sans-serif;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+::selection {
+  background: rgba(37, 99, 255, 0.18);
+  color: var(--text-primary);
+}
+
+.card-surface {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-outline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.badge-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--surface-outline);
+  background: rgba(255, 255, 255, 0.65);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--text-subtle);
+}
+
+@media (max-width: 640px) {
+  body {
+    letter-spacing: 0.005em;
+    line-height: 1.68;
+    background-size: 24px 24px;
+  }
 }
